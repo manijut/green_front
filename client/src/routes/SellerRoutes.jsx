@@ -1,5 +1,5 @@
 import React, { Suspense, lazy } from 'react';
-import { Route } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import { useAppContext } from '../context/AppContext';
 import Loading from '../components/Loading';
 
@@ -13,7 +13,7 @@ const SellerRoutes = () => {
   const { isSeller } = useAppContext();
 
   return (
-    <Suspense fallback={<Loading />}>
+    <>
       <Route
         path="/seller"
         element={isSeller ? <SellerLayout /> : <SellerLogin />}
@@ -22,7 +22,7 @@ const SellerRoutes = () => {
         <Route path="product-list" element={<ProductList />} />
         <Route path="orders" element={<Orders />} />
       </Route>
-    </Suspense>
+    </>
   );
 };
 
