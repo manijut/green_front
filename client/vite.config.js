@@ -12,7 +12,17 @@ export default defineConfig({
     emptyOutDir: true,
     rollupOptions: {
       output: {
-        manualChunks: undefined
+        manualChunks: (id) => {
+          if (id.includes('node_modules')) {
+            return 'vendor';
+          }
+          if (id.includes('src/pages')) {
+            return 'pages';
+          }
+          if (id.includes('src/components')) {
+            return 'components';
+          }
+        }
       }
     }
   },
