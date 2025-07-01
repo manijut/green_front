@@ -7,11 +7,16 @@ export default defineConfig({
     react(),
     tailwindcss(),
   ],
-  server: {
-    port: 5173
-  },
   build: {
     outDir: 'dist',
-    emptyOutDir: true
+    emptyOutDir: true,
+    rollupOptions: {
+      output: {
+        manualChunks: undefined
+      }
+    }
+  },
+  server: {
+    historyApiFallback: true
   }
 })
